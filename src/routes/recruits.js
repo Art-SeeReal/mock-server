@@ -20,11 +20,31 @@ router.get("/latest", (req, res, next) => {
 });
 router.get("/", (req, res, next) => {
   const page = parseInt(req.query.page);
-  const results = recruitsData.results.slice(0, page);
+  const fields = req.query.fields;
+  const areas = req.query.areas;
+  const query = req.query.query;
+  const results = recruitsData.results;
+  console.log(query);
   try {
+    let filteredResults = results;
+    // 첫 번째 필터링: 분야
+    if (fields) {
+      filteredResults = results.filter((recruit) =>
+        fields.includes(recruit.fields.code)
+      );
+    }
+
+    // 두 번째 필터링: 지역
+    if (areas) {
+      filteredResults = filteredResults.filter((recruit) =>
+        areas.includes(recruit.areas.code)
+      );
+    }
+    const paginatedResults = filteredResults.slice(0, page);
+
     res.json({
-      results,
-      count: page,
+      results: paginatedResults,
+      count: paginatedResults.length,
     });
   } catch (err) {
     next(err);
@@ -50,6 +70,17 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body);
+  res.json({ success: true });
+});
+
+router.post("/:id/scrap", (req, res) => {
+  console.log(req.params.id);
+  res.json({ success: true });
+});
+
+router.delete("/:id/scrap", (req, res) => {
+  console.log(req.params.id);
   res.json({ success: true });
 });
 

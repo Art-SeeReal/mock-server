@@ -86,7 +86,12 @@ const getRandomField = () => {
   return field[Math.floor(Math.random() * field.length)];
 };
 
+function getRandomBoolean() {
+  return Math.random() < 0.5;
+};
+
 export {
+  getRandomBoolean,
   getRandomImageUrl,
   getRandomRecruitsTitle,
   getRandomLocation,

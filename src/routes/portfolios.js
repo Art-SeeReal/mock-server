@@ -18,13 +18,28 @@ router.get("/latest", (req, res, next) => {
   }
 });
 
+router.post("/", (req, res) => {
+  res.json({ success: true });
+});
+
 router.get("/", (req, res, next) => {
   const page = parseInt(req.query.page);
-  const results = portfoliosData.results.slice(0, page);
+  const fields = req.query.fields;
+  const query = req.query.query;
+  console.log(query);
+  const results = portfoliosData.results;
   try {
+    let filteredResults = results;
+    if (fields) {
+      filteredResults = results.filter((portfolio) =>
+        fields.includes(portfolio.fields.code)
+      );
+    }
+    const paginatedResults = filteredResults.slice(0, page);
+
     res.json({
-      results,
-      count: page,
+      results: paginatedResults,
+      count: paginatedResults.length,
     });
   } catch (err) {
     next(err);
@@ -46,6 +61,16 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  res.json({ success: true });
+});
+
+router.post("/:id/scrap", (req, res) => {
+  console.log(req.params.id);
+  res.json({ success: true });
+});
+
+router.delete("/:id/scrap", (req, res) => {
+  console.log(req.params.id);
   res.json({ success: true });
 });
 

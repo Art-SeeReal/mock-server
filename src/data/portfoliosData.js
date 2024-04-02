@@ -3,7 +3,7 @@ import {
   getRandomField,
   getRandomName,
   getRandomPortfolioTitle,
-  getRandomLocation,
+  getRandomBoolean,
 } from "./randomData.js";
 
 const portfoliosData = { results: [] };
@@ -14,8 +14,8 @@ for (let i = 1; i <= 80; i++) {
     imageUrl: getRandomImageUrl(),
     artist: getRandomName(),
     title: getRandomPortfolioTitle(),
-    location: getRandomLocation(),
-    field: getRandomField(),
+    fields: getRandomField(),
+    isScrap: getRandomBoolean(),
     RegDate: "20240229",
     like: 32,
     view: 101,

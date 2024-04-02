@@ -32,6 +32,38 @@ router.get("/areas", (req, res, next) => {
   }
 });
 
+router.get("/field", (req, res, next) => {
+  try {
+    res.json({
+      results: [
+        { code: "A000", label: "미술" },
+        { code: "B000", label: "공예" },
+        { code: "C000", label: "디자인" },
+        { code: "D000", label: "사진영상" },
+        { code: "E000", label: "음악" },
+        { code: "F000", label: "문학무용" },
+        { code: "G000", label: "기획" },
+      ],
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/sortType", (req, res, next) => {
+  try {
+    res.json({
+      results: [
+        { code: "A000", label: "오름차순" },
+        { code: "B000", label: "내림차순" },
+        { code: "C000", label: "조회수순" },
+      ],
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post(
   "/upload",
   (req, res, next) => {
