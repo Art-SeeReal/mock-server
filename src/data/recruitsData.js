@@ -13,7 +13,7 @@ for (let i = 1; i <= 80; i++) {
     id: i,
     name: getRandomName(),
     title: getRandomRecruitsTitle(),
-    areas: getRandomLocation(),
+    regions: getRandomLocation(),
     fields: getRandomField(),
     isScrap: getRandomBoolean(),
     view: 101,

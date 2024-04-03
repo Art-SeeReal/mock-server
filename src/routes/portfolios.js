@@ -19,14 +19,13 @@ router.get("/latest", (req, res, next) => {
 });
 
 router.post("/", (req, res) => {
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.get("/", (req, res, next) => {
   const page = parseInt(req.query.page);
   const fields = req.query.fields;
   const query = req.query.query;
-  console.log(query);
   const results = portfoliosData.results;
   try {
     let filteredResults = results;
@@ -55,23 +54,21 @@ router.get("/:id", (req, res) => {
 router.put("/:id", async (req, res) => {
   const artistId = parseInt(req.params.id, 10);
   const updatedData = req.body;
-  //업데이트 데이터
-  console.log(artistId, updatedData);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.delete("/:id", (req, res) => {
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.post("/:id/scrap", (req, res) => {
   console.log(req.params.id);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.delete("/:id/scrap", (req, res) => {
   console.log(req.params.id);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 export default router;

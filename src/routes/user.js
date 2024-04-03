@@ -107,25 +107,43 @@ router.get("/exist/email", (req, res, next) => {
 
 router.get("/like/users", (req, res, next) => {
   try {
-    console.log("dd");
     res.json(userLikeData);
   } catch (err) {
     next(err);
   }
 });
 
-router.post("/like/:id", (req, res, next) => {
+router.post("/like/:userId", (req, res, next) => {
   try {
-    console.log(req.params);
-    res.json({ success: true });
+    res.json({ message: "success" });
   } catch (err) {
     next(err);
   }
 });
 
-router.delete("/like/:id", (req, res, next) => {
+router.delete("/like/:userId", (req, res, next) => {
   try {
-    res.json({ success: true });
+    res.json({ message: "success" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/", (req, res, next) => {
+  try {
+    const user = {
+      userId: "user0",
+      password: "user0000!!",
+      email: "user0@gmail.com",
+      nickname: "유저0",
+      name: "아무개",
+      phone: "01012345678",
+      regions: [{ code: "I000", label: "서울" }],
+      isPrivateEmail: true,
+      isPrivatePhone: true,
+      userType: "예술가",
+    };
+    res.json(user);
   } catch (err) {
     next(err);
   }

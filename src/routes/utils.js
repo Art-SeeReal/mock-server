@@ -4,7 +4,7 @@ import multer from "multer";
 
 const router = express.Router();
 
-router.get("/areas", (req, res, next) => {
+router.get("/regions", (req, res, next) => {
   try {
     res.json({
       results: [
@@ -32,7 +32,7 @@ router.get("/areas", (req, res, next) => {
   }
 });
 
-router.get("/field", (req, res, next) => {
+router.get("/fields", (req, res, next) => {
   try {
     res.json({
       results: [

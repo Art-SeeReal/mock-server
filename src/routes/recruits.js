@@ -24,7 +24,6 @@ router.get("/", (req, res, next) => {
   const areas = req.query.areas;
   const query = req.query.query;
   const results = recruitsData.results;
-  console.log(query);
   try {
     let filteredResults = results;
     // 첫 번째 필터링: 분야
@@ -60,28 +59,23 @@ router.get("/:id", (req, res) => {
 router.put("/:id", async (req, res) => {
   const artistId = parseInt(req.params.id, 10);
   const updatedData = req.body;
-  //업데이트 데이터
-  console.log(artistId, updatedData);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.delete("/:id", (req, res) => {
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.post("/:id/scrap", (req, res) => {
-  console.log(req.params.id);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 router.delete("/:id/scrap", (req, res) => {
-  console.log(req.params.id);
-  res.json({ success: true });
+  res.json({ message: "success" });
 });
 
 export default router;
