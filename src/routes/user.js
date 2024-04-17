@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import users from "../data/users.js";
 import { userLikeData } from "../data/userData.js";
-import { maskLoginId, maskEmail } from "../utils/utils.js";
+import { maskLoginId, maskEmail, getUserToken } from "../utils/utils.js";
 
 router.get("/types", (req, res, next) => {
   try {
@@ -113,16 +113,28 @@ router.get("/like/users", (req, res, next) => {
   }
 });
 
-router.post("/like/:userId", (req, res, next) => {
+router.post("/like", (req, res, next) => {
   try {
+    const userToken = getUserToken(req.headers.authorization);
+
+    if (!userToken) {
+      return res.status(401).json({ message: "로그인 후 이용해 주세요." });
+    }
+
     res.json({ message: "success" });
   } catch (err) {
     next(err);
   }
 });
 
-router.delete("/like/:userId", (req, res, next) => {
+router.delete("/like", (req, res, next) => {
   try {
+    const userToken = getUserToken(req.headers.authorization);
+
+    if (!userToken) {
+      return res.status(401).json({ message: "로그인 후 이용해 주세요." });
+    }
+
     res.json({ message: "success" });
   } catch (err) {
     next(err);

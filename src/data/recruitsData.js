@@ -3,7 +3,7 @@ import {
   getRandomRecruitsTitle,
   getRandomLocation,
   getRandomField,
-  getRandomBoolean
+  getRandomBoolean,
 } from "./randomData.js";
 
 const recruitsData = { results: [] };
@@ -11,11 +11,13 @@ const recruitsData = { results: [] };
 for (let i = 1; i <= 80; i++) {
   recruitsData.results.push({
     id: i,
-    name: getRandomName(),
+    username: getRandomName(),
     title: getRandomRecruitsTitle(),
     regions: getRandomLocation(),
     fields: getRandomField(),
     isScrap: getRandomBoolean(),
+    isLike: getRandomBoolean(),
+    userId: "user0",
     view: 101,
     RegDate: "20240229",
     content:

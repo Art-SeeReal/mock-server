@@ -1,5 +1,6 @@
 import express from "express";
 import portfoliosData from "../data/portfoliosData.js";
+import { getUserToken } from "../utils/utils.js";
 
 const router = express.Router();
 
@@ -48,6 +49,10 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res) => {
   const artistId = parseInt(req.params.id, 10);
   const results = portfoliosData.results.find((item) => item.id === artistId);
+
+  if (!results) {
+    return res.status(404).json({ message: "없는 포트폴리오 게시글입니다." });
+  }
   res.json(results);
 });
 
@@ -62,12 +67,22 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/:id/scrap", (req, res) => {
-  console.log(req.params.id);
+  const userToken = getUserToken(req.headers.authorization);
+
+  if (!userToken) {
+    return res.status(401).json({ message: "로그인 후 이용해 주세요." });
+  }
+
   res.json({ message: "success" });
 });
 
 router.delete("/:id/scrap", (req, res) => {
-  console.log(req.params.id);
+  const userToken = getUserToken(req.headers.authorization);
+
+  if (!userToken) {
+    return res.status(401).json({ message: "로그인 후 이용해 주세요." });
+  }
+
   res.json({ message: "success" });
 });
 

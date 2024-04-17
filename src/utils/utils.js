@@ -24,3 +24,9 @@ export const maskEmail = (email) => {
 
   return maskedUsername + "@" + domain;
 };
+
+export const getUserToken = (authorization) => {
+  if (!authorization) return;
+
+  return authorization.replace(/Bearer /g, "");
+};

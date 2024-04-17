@@ -12,10 +12,12 @@ for (let i = 1; i <= 80; i++) {
   portfoliosData.results.push({
     id: i,
     imageUrl: getRandomImageUrl(),
-    artist: getRandomName(),
+    username: getRandomName(),
     title: getRandomPortfolioTitle(),
     fields: getRandomField(),
     isScrap: getRandomBoolean(),
+    isLike: getRandomBoolean(),
+    userId: "user0",
     RegDate: "20240229",
     like: 32,
     view: 101,
