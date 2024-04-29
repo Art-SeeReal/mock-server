@@ -4,6 +4,7 @@ import cors from "cors";
 import login from "./src/routes/login.js";
 import signup from "./src/routes/signup.js";
 import user from "./src/routes/user.js";
+import users from "./src/routes/users.js";
 import portfolios from "./src/routes/portfolios.js";
 import recruits from "./src/routes/recruits.js";
 import banners from "./src/routes/banners.js";
@@ -28,6 +29,7 @@ app.use(
 app.use("/login", login);
 app.use("/signup", signup);
 app.use("/user", user);
+app.use("/users", users);
 app.use("/portfolios", portfolios);
 app.use("/recruits", recruits);
 app.use("/banners", banners);

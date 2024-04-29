@@ -10,7 +10,7 @@ router.post("/", (req, res, next) => {
     );
     if (!user) {
       return res
-        .status(404)
+        .status(401)
         .json({ message: "아이디 또는 비밀번호를 다시 확인해 주세요." });
     }
 
